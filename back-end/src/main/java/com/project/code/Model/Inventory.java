@@ -1,5 +1,13 @@
 package com.project.code.Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationValue;
+import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
 public class Inventory {
     // 1. Add 'id' field:
     // - Type: private long
