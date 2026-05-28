@@ -2,6 +2,16 @@ package com.project.code.Model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManeToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import  jakarta.persistence.id;
+import jakarta.valadation.constrains.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class OrderDetails {
 
@@ -58,7 +68,7 @@ public class OrderDetails {
     // serialization.
     @JsonManagedReference
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private ListOrderItem> items;
+    private List<OrderItem> items;
     // 7. Add constructors:
     // - A no-argument constructor.
     // - A parameterized constructor that accepts Customer, Store, totalPrice, and
@@ -70,6 +80,9 @@ public class OrderDetails {
         this.customer = customer;
         this.store = store;
         this.totalPrice = totalPrice;
+    }
+    public OrderDetails(){
+
     }
 
     // 9. Add Getters and Setters:
