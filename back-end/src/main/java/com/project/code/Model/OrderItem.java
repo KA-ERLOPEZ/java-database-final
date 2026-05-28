@@ -1,5 +1,14 @@
 package com.project.code.Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constrains.Min;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class OrderItem {
 
@@ -33,7 +42,8 @@ public class OrderItem {
     // - Apply @JsonManagedReference to prevent circular references during JSON
     // serialization.
     @ManyToOne
-    @JoinColumn(name = "product_id") 
+    @JoinColumn(name = "product_id")
+    @JsonManagedReference 
     private Product product;
 
     // 4. Add 'quantity' field:
