@@ -93,6 +93,10 @@ public class Customer {
         return phone;
     }
 
+    public void setPhone(String phone){
+        this.phone = phone;
+    }
+
     // 7. Ensure to use proper annotations and validate constraints:
     // - Use @NotNull for fields that cannot be empty like 'name', 'email', and
     // 'phone'.
