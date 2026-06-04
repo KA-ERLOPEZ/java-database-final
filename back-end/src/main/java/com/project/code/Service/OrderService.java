@@ -1,8 +1,12 @@
 package com.project.code.Service;
 
 import com.project.code.Model.Customer;
+import com.project.code.Model.Inventory;
 import com.project.code.Model.OrderDetails;
+import com.project.code.Model.OrderItem;
 import com.project.code.Model.PlaceOrderRequestDTO;
+import com.project.code.Model.Product;
+import com.project.code.Model.PurchaseProductDTO;
 import com.project.code.Model.Store;
 import com.project.code.Repo.CustomerRepository;
 import com.project.code.Repo.InventoryRepository;
@@ -85,9 +89,18 @@ public class OrderService {
         // levels, and save the changes using `inventoryRepository.save()`.
         // - Create and save `OrderItem` for each product and associate it with the
         // `OrderDetails` using `orderItemRepository.save()`.
-        placeOrderRequest.getPurchaseProduct().stream().forEach(purchaseProduct ->{
-            
-        });
+        Inventory inventory = null;
+        Product product = new Product;
+        for (PurchaseProductDTO purchaseProduct : placeOrderRequest.getPurchaseProduct()) {
+            inventory = inventoryRepository.findByProductIdandStoreId(purchaseProduct.getId(), placeOrderRequest.getStoreId());
+            if(inventory.getStockLevel()< purchaseProduct.getQuantity()){
+                throw new RuntimeException("Insufficient stock level");
+            }
+            inventory.setStockLevel(inventory.getStockLevel()-purchaseProduct.getQuantity());
+            product.
+            OrderItem orderItem = new OrderItem(orderDetails, product, purchaseProduct.getQuantity(), purchaseProduct.getPrice())
+            inventoryRepository.update(inventory);
+        }
 
     }
 

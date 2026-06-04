@@ -63,7 +63,7 @@ public class OrderItem {
     // - A no-argument constructor.
     // - A parameterized constructor that accepts OrderDetails, Product, quantity,
     // and price as parameters.
-    private OrderItem( OrderDetails order, Product product, Integer quantity, Double price){
+    public OrderItem( OrderDetails order, Product product, Integer quantity, Double price){
         this.order = order;
         this.product = product;
         this.quantity = quantity;
