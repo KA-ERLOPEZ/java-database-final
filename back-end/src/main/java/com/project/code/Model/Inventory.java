@@ -68,7 +68,7 @@ public class Inventory {
     public Inventory(Product product, Store store, Integer stockLevel){
         this.product = product;
         this.store = store;
-        this.stockLlevel = stockLevel;
+        this.stockLevel = stockLevel;
     }
 
     // 8. Add @Entity annotation:

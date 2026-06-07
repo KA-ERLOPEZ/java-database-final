@@ -134,7 +134,7 @@ public class InventoryController {
     public Map<String, String> removeProduct(@PathVariable Long id) {
         Map<String, String> map = new HashMap<>();
 
-        if (!serviceClass.ValidateProductId(id)) {
+        if (!serviceClass.validateProductId(id)) {
             map.put("message", "Id " + id + " no presente en la base de datos");
             return map;
         }

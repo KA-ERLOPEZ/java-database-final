@@ -54,7 +54,7 @@ public class OrderDetails {
     // 4. Add 'totalPrice' field:
     // - Type: private Double
     // - This field represents the total price of the order.
-    @Min(value=0.0, message= "Total price cannot be negative")
+    //@Min(value="0.0", message= "Total price cannot be negative")
     private Double totalPrice;
 
     // 5. Add 'date' field:
@@ -79,7 +79,7 @@ public class OrderDetails {
     // 8. Add @Entity annotation:
     // - Use @Entity above the class name to mark it as a JPA entity.
     
-    public OrderDetails(Customer customer, Store store, Integer totalPrice, LocalDateTime date){
+    public OrderDetails(Customer customer, Store store, Double totalPrice, LocalDateTime date){
         this.customer = customer;
         this.store = store;
         this.totalPrice = totalPrice;
@@ -118,11 +118,11 @@ public class OrderDetails {
         this.store = store;
     }
 
-    public Integer getTotalPrice(){
+    public Double getTotalPrice(){
         return totalPrice;
     }
 
-    public void setTotalPrice(Integer totalPrice){
+    public void setTotalPrice(Double totalPrice){
         this.totalPrice = totalPrice;
     }
 

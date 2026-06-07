@@ -62,7 +62,7 @@ public class ProductController {
         System.out.println("resultado: ");
         System.out.println("resultado: ");
         Map<String, Object> map = new HashMap<>();
-        Product result = productRepository.findByid(id);
+        Product result = productRepository.findById(id).orElse(new Product());
 
         System.out.println("resultado: " + result);
         map.put("products", result);
@@ -111,7 +111,7 @@ public class ProductController {
     public Map<String, Object> getProductbyCategoryAndStoreId(@PathVariable String category,
             @PathVariable long storeid) {
         Map<String, Object> map = new HashMap<>();
-        List result = productRepository.findProductByCategory(category, storeid);
+        List result = productRepository.findProductByCategory(storeid, category);
 
         map.put("product", result);
         return map;
@@ -121,12 +121,12 @@ public class ProductController {
     public Map<String, String> deleteProduct(@PathVariable Long id) {
         Map<String, String> map = new HashMap<>();
 
-        if (!serviceClass.ValidateProductId(id)) {
+        if (!serviceClass.validateProductId(id)) {
             map.put("message", "Id " + id + " no presente en la base de datos");
             return map;
         }
         inventoryRepository.deleteByProductId(id);
-        orderItemRepository.deleteByProductId(id);
+        orderItemRepository.deleteById(id);
         productRepository.deleteById(id);
 
         map.put("message", "Producto eliminado con éxito con id: " + id);

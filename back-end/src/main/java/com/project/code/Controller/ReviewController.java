@@ -29,28 +29,31 @@ public class ReviewController {
     @GetMapping("/{storeId}/{productId}")
     public Map<String, Object> getReviews(@PathVariable long storeId, @PathVariable long productId) {
         Map<String, Object> map = new HashMap<>();
-        List reviews = reviewRepository.findByStoreIdAndProductId(storeId, productId);
+        List<Review> reviews = reviewRepository.findByStoreIdAndProductId(storeId, productId);
 
         List<Map<String, Object>> reviewsWithCustomerNames = new ArrayList<>();
 
         // Para cada reseña, obtener detalles del cliente y agregarlos a la respuesta
-        for (Review review : reviews) { Map<String, Object> reviewMap = new
-         HashMap<>(); reviewMap.put("review", review.getComment());
-        reviewMap.put("rating", review.getRating());
+        for (Review review : reviews) {
+            Map<String, Object> reviewMap = new HashMap<>();
+            reviewMap.put("review", review.getComment());
+            reviewMap.put("rating", review.getRating());
 
-        //Obtener detalles del cliente usando customerId Customer customer =
-        customerRepository.findByid(review.getCustomerId()); if (customer != null) {
-        reviewMap.put("customerName", customer.getName());
-    }else
+            // Obtener detalles del cliente usando customerId 
+            Customer customer = customerRepository.findById(review.getCustomerId()).orElse(null);
+            if (customer != null) {
+                reviewMap.put("customerName", customer.getName());
+            } else
 
-    {
-        reviewMap.put("customerName", "Desconocido");
-    }
+            {
+                reviewMap.put("customerName", "Desconocido");
+            }
 
-    reviewsWithCustomerNames.add(reviewMap);
-    }
+            reviewsWithCustomerNames.add(reviewMap);
+        }
 
-    map.put("reviews",reviewsWithCustomerNames);return map;
+        map.put("reviews", reviewsWithCustomerNames);
+        return map;
 
     }
 

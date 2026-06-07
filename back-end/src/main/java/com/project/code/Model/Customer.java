@@ -9,6 +9,7 @@ import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Customer {

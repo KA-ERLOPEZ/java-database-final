@@ -46,7 +46,7 @@ public class Product {
     // - This field cannot be empty, use the @NotNull annotation to enforce this
     // rule.
     @NotNull(message="Price cannot be null")
-    @Min(value= 0.0, message="Price cannot be negative.")
+   // @Min(value= "0.0", message="Price cannot be negative.")
     private Double price;
 
     // 5. Add 'sku' field:

@@ -58,10 +58,11 @@ public class Review {
     // 8. Add constructor:
     // - The constructor should accept values for customerId, productId, storeId,
     // rating, and an optional comment.
-    public Review(Long customerId, Long productId, Long storeId){
+    public Review(Long customerId, Long productId, Long storeId, Integer rati){
         this.customerId = customerId;
         this.productId = productId;
         this.storeId = storeId;
+        this.rating = rating;
     }
     // 9. Add @Id annotation:
     // - Use @Id to mark the field 'id' as the primary key for MongoDB.
@@ -88,4 +89,19 @@ public class Review {
         this.productId = productId;
     }
 
+    public String getComment(){
+        return comment;
+    }
+
+    public void setComment(String comment){
+        this.comment = comment;
+    }
+
+    public Integer getRating(){
+        return rating;
+    }
+
+    public void setRating(Integer rating n {
+        this.rating = rating;
+    }g)
 }
