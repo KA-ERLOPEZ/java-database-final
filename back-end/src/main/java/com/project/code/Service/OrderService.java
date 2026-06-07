@@ -90,7 +90,7 @@ public class OrderService {
         // - Create and save `OrderItem` for each product and associate it with the
         // `OrderDetails` using `orderItemRepository.save()`.
         Inventory inventory = null;
-        Product product = new Product;
+        Product product = new Product();
         for (PurchaseProductDTO purchaseProduct : placeOrderRequest.getPurchaseProduct()) {
             inventory = inventoryRepository.findByProductIdandStoreId(purchaseProduct.getId(), placeOrderRequest.getStoreId());
             if(inventory.getStockLevel()< purchaseProduct.getQuantity()){
