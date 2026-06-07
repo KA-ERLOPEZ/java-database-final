@@ -2,8 +2,16 @@ package com.project.code.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.validation.contrants.*;
-import com.fasterxml.jackson.annotation.JsonManageReference;
+import jakarta.validation.constraints.*;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "product", uniqueConstraints =@UniqueConstraint(columnNames = "sku"))
@@ -30,7 +38,7 @@ public class Product {
     // - Type: private String
     // - This field cannot be empty, use the @NotNull annotation to enforce this
     // rule.
-    @NotNull("Category can't be null")
+    @NotNull(message="Category can't be null")
     private String category;
 
     // 4. Add 'price' field:
@@ -47,7 +55,7 @@ public class Product {
     // enforce this rule.
     // - Use the @Table annotation with uniqueConstraints to ensure the 'sku' column
     // is unique.
-    @NotNull(messge="Sku cannot be null")
+    @NotNull(message="Sku cannot be null")
     private String sku;
 
     // Example: @Table(name = "product", uniqueConstraints =

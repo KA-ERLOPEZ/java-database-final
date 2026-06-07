@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
-import com.fasterxml.jackson.annotation.JsonManageReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Store {

@@ -1,14 +1,17 @@
 package com.project.code.Model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.ManeToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import  jakarta.persistence.id;
-import jakarta.valadation.constrains.*;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.FetchType;
+import  jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 

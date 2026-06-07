@@ -98,7 +98,7 @@ public class OrderService {
             }
             inventory.setStockLevel(inventory.getStockLevel()-purchaseProduct.getQuantity());
             product.
-            OrderItem orderItem = new OrderItem(orderDetails, product, purchaseProduct.getQuantity(), purchaseProduct.getPrice())
+            OrderItem orderItem = new OrderItem(orderDetails, product, purchaseProduct.getQuantity(), purchaseProduct.getPrice());
             inventoryRepository.update(inventory);
         }
 

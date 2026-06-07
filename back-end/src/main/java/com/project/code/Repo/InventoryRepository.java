@@ -2,6 +2,8 @@ package com.project.code.Repo;
 
 import java.util.List;
 
+import com.project.code.Model.Inventory;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;

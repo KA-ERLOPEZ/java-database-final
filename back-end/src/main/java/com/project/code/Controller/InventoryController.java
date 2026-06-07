@@ -41,7 +41,7 @@ public class InventoryController {
 
         Map<String, String> map = new HashMap<>();
         System.out.println("Nivel de Stock: " + inventory.getStockLevel());
-        if (!serviceClass.ValidateProductId(product.getId())) {
+        if (!serviceClass.validateProductId(product.getId())) {
             map.put("message", "Id " + product.getId() + " no presente en la base de datos");
             return map;
         }

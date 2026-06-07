@@ -5,7 +5,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constrains.Min;
+import jakarta.persistence.JoinColumn;
+import jakarta.validation.constraints.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 

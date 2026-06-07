@@ -3,8 +3,9 @@ package com.project.code.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity

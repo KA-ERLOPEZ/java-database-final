@@ -5,6 +5,8 @@ import com.project.code.Model.Product;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
     // 1. Add the repository interface:
@@ -66,7 +68,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     public List<Product> findByNameAndCategory(Long storeId, String pname, String category);
 
     @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND i.product.category = :category")
-    public list<Product>findByCategoryAndStoreId(Long storeId, String category);
+    public List<Product>findByCategoryAndStoreId(Long storeId, String category);
 
     @Query("SELECT i FROM Product i WHERE LOWER(i.name) LIKE LOWER(CONCAT('%', :pname, '%'))")
     public List<Product>findProductBySubName(String pname);
