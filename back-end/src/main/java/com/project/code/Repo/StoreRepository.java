@@ -26,7 +26,7 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     // - Parameter: Long id
 
     // Example: public Store findById(Long id);
-    public Store findById(Long id);
+    //public Store findById(Long id);
 
     // - **findBySubName**:
     // - This method will retrieve stores whose name contains a given substring.
@@ -34,6 +34,6 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     // - Parameter: String pname
     // - Use @Query annotation to write a custom query.
     
-    @Query("SELECT s FROM Strore s WHERE LOWER(s.name) LIKE LOWER(CONCAT('%',:panme:'%'))")
+    @Query("SELECT s FROM Strore s WHERE LOWER(s.name) LIKE LOWER(CONCAT('%',:pname,'%'))")
     public List<Store> findBySubName(String pname);
 }

@@ -58,7 +58,7 @@ public class Review {
     // 8. Add constructor:
     // - The constructor should accept values for customerId, productId, storeId,
     // rating, and an optional comment.
-    public Review(Long customerId, Long productId, Long storeId, Integer rati){
+    public Review(Long customerId, Long productId, Long storeId, Integer rating){
         this.customerId = customerId;
         this.productId = productId;
         this.storeId = storeId;
@@ -101,7 +101,7 @@ public class Review {
         return rating;
     }
 
-    public void setRating(Integer rating n {
+    public void setRating(Integer rating){
         this.rating = rating;
-    }g)
+    }
 }

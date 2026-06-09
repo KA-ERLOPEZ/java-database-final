@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-
 public interface ProductRepository extends JpaRepository<Product, Long> {
     // 1. Add the repository interface:
     // - Extend JpaRepository<Product, Long> to inherit basic CRUD functionality.
@@ -62,16 +61,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     // - Return type: List<Product>
     // - Parameters: Long storeId, String pname
     // - Use @Query annotation to write a custom query.
-    public List<Product> findByNameLike(Long storeId, String pname);
+    @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND LOWER(i.product.name) LIKE LOWER(CONCAT('%', :pname, '%'))")
+    List<Product> findByNameLike(long storeId, String pname);
 
     @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND LOWER(i.product.name) LIKE LOWER(CONCAT('%', :pname, '%')) AND i.product.category = :category")
     public List<Product> findByNameAndCategory(Long storeId, String pname, String category);
 
     @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND i.product.category = :category")
-    public List<Product>findByCategoryAndStoreId(Long storeId, String category);
+    public List<Product> findByCategoryAndStoreId(Long storeId, String category);
 
     @Query("SELECT i FROM Product i WHERE LOWER(i.name) LIKE LOWER(CONCAT('%', :pname, '%'))")
-    public List<Product>findProductBySubName(String pname);
+    public List<Product> findProductBySubName(String pname);
 
     @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId")
     public List<Product> findProductsByStoreId(Long storeId);
@@ -81,7 +81,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT i FROM Product i WHERE LOWER(i.name) LIKE LOWER(CONCAT('%', :pname, '%')) AND i.category = :category")
     public List<Product> findProductBySubNameAndCategory(String pname, String category);
-
-
 
 }

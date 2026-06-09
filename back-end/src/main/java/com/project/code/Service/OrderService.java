@@ -71,7 +71,7 @@ public class OrderService {
         // - Fetch the store by ID from `storeRepository`.
         // - If the store doesn't exist, throw an exception. Use
         // `storeRepository.findById()`.
-        Store store = customerRepository.findById(placeOrderRequest.getStoreId());
+        Store store = storeRepository.findById(placeOrderRequest.getStoreId()).orElse(null);
         if (store == null) {
             throw new RuntimeException("Store not found");
         }
@@ -92,14 +92,14 @@ public class OrderService {
         Inventory inventory = null;
         Product product = new Product();
         for (PurchaseProductDTO purchaseProduct : placeOrderRequest.getPurchaseProduct()) {
-            inventory = inventoryRepository.findByProductIdandStoreId(purchaseProduct.getId(), placeOrderRequest.getStoreId());
+            inventory = inventoryRepository.findByProductIdAndStoreId(purchaseProduct.getId(), placeOrderRequest.getStoreId());
             if(inventory.getStockLevel()< purchaseProduct.getQuantity()){
                 throw new RuntimeException("Insufficient stock level");
             }
             inventory.setStockLevel(inventory.getStockLevel()-purchaseProduct.getQuantity());
-            product.
             OrderItem orderItem = new OrderItem(orderDetails, product, purchaseProduct.getQuantity(), purchaseProduct.getPrice());
-            inventoryRepository.update(inventory);
+            orderItemRepository.save(orderItem);
+            inventoryRepository.save(inventory);
         }
 
     }

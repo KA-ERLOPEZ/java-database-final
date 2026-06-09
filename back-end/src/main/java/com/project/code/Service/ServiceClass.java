@@ -28,7 +28,7 @@ public class ServiceClass {
     // `true`)
     public boolean validateInventory(Inventory inventory) {
 
-        Inventory validInventory = inventoryRepository.findByProductIdandStoreId(inventory.getProduct().getId(),
+        Inventory validInventory = inventoryRepository.findByProductIdAndStoreId(inventory.getProduct().getId(),
                 inventory.getStore().getId());
 
         if (Objects.isNull(validInventory)) {
@@ -73,7 +73,7 @@ public class ServiceClass {
 
     public Inventory getInventoryId(Inventory inventory){
 
-        return inventoryRepository.findByProductIdandStoreId(inventory.getProduct().getId(), inventory.getStore().getId());
+        return inventoryRepository.findByProductIdAndStoreId(inventory.getProduct().getId(), inventory.getStore().getId());
     }
 
 }
